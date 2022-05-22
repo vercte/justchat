@@ -8,9 +8,22 @@ let messages = $("#chat-panel");
 let setName = $("#name-input");
 let setNameButton = $("#name-set");
 
+let settingsButton = $("#settings-button");
+let settings = $("#settings");
+
 let onlineCount = $("#online");
 
 let userName = setName.value;
+
+settingsButton.addEventListener("click", () => {
+  settings.classList.toggle("closed");
+})
+
+input.addEventListener("keydown", ({key}) => {
+  if(key == "Enter") {
+    sendButton.click();
+  }
+})
 
 sendButton.addEventListener("click", () => {
   if(input.value) {
@@ -20,7 +33,7 @@ sendButton.addEventListener("click", () => {
 })
 
 setNameButton.addEventListener("click", () => {
-  if(setName.value) {
+  if(setName.value && setName.value != userName) {
     socket.emit("userSetName", {"from": userName, "to": setName.value});
     userName = setName.value;
   }

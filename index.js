@@ -58,12 +58,12 @@ io.on("connection", (socket) => {
     delete chat.users[socket.id]
   })
   socket.on("sendMessage", (msg) => {
-    console.log(`${msg.from}: ${msg.message}`);
     io.emit("sentMessage", msg)
   })
   socket.on("userSetName", (inf) => {
-    console.log(`${inf.from} set their name to ${inf.to}`);
-    io.emit("userSetName", inf)
+    if(inf.from != inf.to) {
+      io.emit("userSetName", inf)
+    }
   })
 })
 

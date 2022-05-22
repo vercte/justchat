@@ -1,24 +1,165 @@
 body {
   font-family: sans-serif;
-  margin: 5em;
-  margin-top: 2em;
-  margin-bottom: 2em;
+  margin: 0px;
+
+  display: grid;
+  grid-template-columns: 36pt 1fr;
+  grid-template-rows: 1fr 2em 3em;
+
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+}
+
+body.dark {
+  --background-color: #041322;
+  --background-trns: #041322dd;
+  --text-color: #dcefff;
+  --border-color: #043362;
+  --unimportant-text: #7e8a94;
+
+  color: var(--text-color);
 }
 
 #chat-panel {
-  height: 10em;
-  background-color: #efefef;
-  margin-bottom: 1em;
+  grid-area: 1 / 2 / 2 / 3;
+
+  background: var(--background-color);
   overflow: scroll;
   padding: 1em;
-  border-radius: 0.5em;
 }
 
 .chat-message {
-  height: 1.1em;
+  height: auto;
+  line-height: 1.1em;
+  margin-bottom: 1em;
+}
+
+#message-bar {
+  grid-area: 3 / 2 / 4 / 3;
+  display: flex;
+}
+
+#online {
+  grid-area: 2 / 2 / 3 / 3;
+  background: var(--background-color);
+  border-top: 1px var(--border-color) solid;
+
+  padding-left: 1em;
+  line-height: 2em;
+}
+
+#side-bar {
+  grid-area: 1 / 1 / 4 / 2;
+  display: flex;
+  background: var(--background-color);
+  border-right: 1px var(--border-color) solid;
+
+  position: relative;
+  z-index: 10;
+  padding: 0.5em;
+
+  flex-direction: column-reverse;
+
+}
+
+input#message-input {
+  box-sizing: border-box;
+  border: none;
+  background: var(--background-color);
+
+  border-top: 1px var(--border-color) solid;
+  margin: 0px;
+  padding: 1em;
+  padding-left: 2em;
+  flex-grow: 1;
+
+  color: var(--text-color);
+}
+
+button#message-send {
+  width: 40pt;
+  background: var(--background-color);
+
+  border: none;
+  border-top: 1px var(--border-color) solid;
+  border-left: 1px var(--border-color) solid;
+
+  color: var(--text-color);
+
+  padding: 0.5em;
+  cursor: pointer;
+}
+
+input#message-input::placeholder {
+  color: var(--unimportant-text);
+}
+
+button#settings-button {
   width: 100%;
-  margin-bottom: 0.2em;
-  padding-bottom: 0.1em;
-  border-bottom: 1px lightgrey solid;
-  white-space: nowrap;
+  border: none;
+
+  cursor: pointer;
+
+  padding: 0;
+  margin-top: 0.5em;
+
+  background: none;
+  align-self: flex-end;
+}
+
+#settings {
+  box-sizing: border-box;
+  position: fixed;
+  transition: left 300ms;
+  width: 20em;
+  padding: 2em;
+  padding-top: 1em;
+
+  background: var(--background-trns);
+
+  border: none;
+  border-right: 1px var(--border-color) solid;
+  z-index: 8;
+  top: 0;
+  bottom: 0;
+
+  left: 36pt;
+}
+
+#settings.closed {
+  left: -20em;
+}
+
+#settings button {
+  border: 1px var(--border-color) solid;
+  background: var(--background-color);
+  border-radius: 3pt;
+  height: 2em;
+  padding: 0.2em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+
+  color: var(--text-color);
+
+  cursor: pointer;
+}
+
+#settings input[type="text"] {
+  border: 1px var(--border-color) solid;
+  background: var(--background-color);
+  border-radius: 3pt;
+  height: 2em;
+  padding: 0.2em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  margin-bottom: 1em;
+
+  color: var(--text-color);
+
+  margin-right: 0.5em;
+
+  width: 50%;
 }
