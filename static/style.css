@@ -1,0 +1,24 @@
+body {
+  font-family: sans-serif;
+  margin: 5em;
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+#chat-panel {
+  height: 10em;
+  background-color: #efefef;
+  margin-bottom: 1em;
+  overflow: scroll;
+  padding: 1em;
+  border-radius: 0.5em;
+}
+
+.chat-message {
+  height: 1.1em;
+  width: 100%;
+  margin-bottom: 0.2em;
+  padding-bottom: 0.1em;
+  border-bottom: 1px lightgrey solid;
+  white-space: nowrap;
+}
